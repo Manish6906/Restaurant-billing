@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0px auto;
+    padding: 0px;
+} 
 @media print {
   body * {
     visibility: hidden;
