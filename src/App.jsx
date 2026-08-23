@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import HeroSection from "./Copmponent/HeroSection";
 import SectionOne from "./Copmponent/SectionOne";
 import SectionTwo from "./Copmponent/SectionTwo";
@@ -7,51 +8,26 @@ import PremiumSection from "./Copmponent/PremiumSection";
 import TextSection from "./Copmponent/TextSection";
 import IconSection from "./Copmponent/IconSection";
 import Navbar from "./Copmponent/Navbar";
+import Orders from './Copmponent/Orders';
+import FirsPage from "./Copmponent/FirsPage";
+import Cart from "./Copmponent/Cart";
+import Dashboard from "./Copmponent/Dashboard";
+import GoogleLogin from "./Copmponent/GoogleLogin";
+import Menu from "./Copmponent/Menu";
 
 function App() {
-  const sectionRef = useRef(null);
-  const [progress, setProgress] = useState(0);
-
-  // 🔥 Scroll Tracking
-  useEffect(() => {
-    const handleScroll = () => {
-      const section = sectionRef.current;
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const total = section.offsetHeight - window.innerHeight;
-
-      const scrolled = Math.min(Math.max(-rect.top, 0), total);
-      setProgress(scrolled / total); // 0 → 1
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // 🔥 Smooth easing function
-  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
-
-  // 🔥 Dynamic translate function
-  const getTranslate = (start, end) => {
-    if (progress < start) return 100;
-    if (progress > end) return 0;
-
-    const raw = (progress - start) / (end - start);
-    const eased = easeOut(raw);
-
-    return 100 - eased * 100;
-  };
+  const [cart, setCart] = useState([]);
 
   return (
     <>
-    <Navbar />
-      {/* <HeroSection />
-      <TextSection />
-      <IconSection /> */}
-
-      {/* 🔥 SCROLL ANIMATION SECTION */}
-     
+      {/* <Navbar /> */}
+      <Routes>
+        <Route path="/" element={<FirsPage />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<GoogleLogin />} />
+      </Routes>
     </>
   );
 }
