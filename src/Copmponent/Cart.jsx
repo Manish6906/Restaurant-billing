@@ -12,7 +12,7 @@ const Cart = ({ cart = [], setCart = () => {} }) => {
     name: "",
     phone: "",
   });
-// cjjdsjjs
+// cjjdsjjs ddsfs
   const API = import.meta.env.VITE_API_URL;
 
   // Increase / Decrease Quantity
