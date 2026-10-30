@@ -5,7 +5,7 @@ const menu = [
   { id: 3, name: "Paneer Burger", price: 150 },
   { id: 4, name: "French Fries", price: 90 },
 
-  // 🍕 Pizza
+  //  Pizza
   { id: 5, name: "Margherita Pizza", price: 200 },
   { id: 6, name: "Farmhouse Pizza", price: 280 },
   { id: 7, name: "Paneer Pizza", price: 300 },
